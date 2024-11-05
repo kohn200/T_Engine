@@ -11,7 +11,6 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TD_Window.h" />
-    <ClInclude Include="CommonInclude.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="TD_Window.rc">

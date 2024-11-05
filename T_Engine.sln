@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TD_Window", "TD_Window\TD_W
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TDEngine_Window", "TDEngine_Window\TDEngine_Window.vcxproj", "{511FB906-B20E-4EB3-9D2F-F891CF44C7DD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TDEngine_SOURCE", "TDEngine_SOURCE\TDEngine_SOURCE.vcxitems", "{F6422674-9C6E-4935-9AB3-FBD056A75386}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -37,5 +39,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F0C46F0A-342A-4A08-8F68-F32326168869}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		TDEngine_SOURCE\TDEngine_SOURCE.vcxitems*{511fb906-b20e-4eb3-9d2f-f891cf44c7dd}*SharedItemsImports = 4
+		TDEngine_SOURCE\TDEngine_SOURCE.vcxitems*{f6422674-9c6e-4935-9ab3-fbd056a75386}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal

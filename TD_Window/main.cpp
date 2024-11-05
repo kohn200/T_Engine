@@ -4,7 +4,13 @@
 #include "framework.h"
 #include "TD_Window.h"
 
+#pragma comment (lib, "..\\x64\\Debug\\TDEngine_Window.lib")
+
+#include "..\\TDEngine_SOURCE\\TDApplication.h"
+
 #define MAX_LOADSTRING 100
+
+Application App;
 
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
@@ -49,6 +55,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,             // 프로그램의 �
 
     // PeekMessage: 메세지큐에 메세지 유무에 상관없이 함수가 리턴된다.
     //              리턴 값이 true인 경우 메세지가 있고 false 인경우는 메세지가 없다라고 가르켜 준다.
+
+    App.Test();
 
     while (true)
     {

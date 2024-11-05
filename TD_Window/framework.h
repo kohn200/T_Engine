@@ -13,6 +13,8 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <iostream>
+using namespace std;
 
 // ============================= 정적 라이브러리 =============================
 // 프로그램이 실행될 때 메모리에 올라가져 있는 것들. ex) #include <vector> 등등..
