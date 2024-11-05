@@ -146,6 +146,11 @@
     <Image Include="small.ico" />
     <Image Include="TD_Window.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TDEngine_Window\TDEngine_Window.vcxproj">
+      <Project>{511fb906-b20e-4eb3-9d2f-f891cf44c7dd}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
