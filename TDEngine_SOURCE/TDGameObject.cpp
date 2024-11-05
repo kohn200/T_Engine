@@ -13,19 +13,19 @@ GameObject::~GameObject()
 
 void GameObject::Update()
 {
-	if (Input::GetKey(eKeyCode::A))
+	if (Input::GetKey(eKeyCode::A) || Input::GetKey(eKeyCode::Left))
 	{
 		m_X -= 0.01f;
 	}
-	if (Input::GetKey(eKeyCode::D))
+	if (Input::GetKey(eKeyCode::D) || Input::GetKey(eKeyCode::Right))
 	{
 		m_X += 0.01f;
 	}
-	if (Input::GetKey(eKeyCode::W))
+	if (Input::GetKey(eKeyCode::W) || Input::GetKey(eKeyCode::Up))
 	{
 		m_Y -= 0.01f;
 	}
-	if (Input::GetKey(eKeyCode::S))
+	if (Input::GetKey(eKeyCode::S) || Input::GetKey(eKeyCode::Down))
 	{
 		m_Y += 0.01f;
 	}
