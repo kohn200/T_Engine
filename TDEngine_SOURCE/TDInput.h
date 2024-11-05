@@ -1,7 +1,7 @@
 #pragma once
 #include "CommonInclude.h"
 
-enum class eKeyState
+enum class eKeyState	// 키 이벤트
 {
 	Down,
 	Pressed,
@@ -24,16 +24,26 @@ public:
 	struct Key
 	{
 		eKeyCode keyCode;
-		eKeyState state;
+		eKeyState keyState;
 		bool bPressed;
 	};
 
 	static void Initialize();
 	static void Update();
-	
-	static bool GetKeyDown(eKeyCode keyCode) { return m_Keys[(UINT)keyCode].state == eKeyState::Down; }
-	static bool GetKeyUp(eKeyCode keyCode) { return m_Keys[(UINT)keyCode].state == eKeyState::Up; }
-	static bool GetKey(eKeyCode keyCode) { return m_Keys[(UINT)keyCode].state == eKeyState::Pressed; }
+
+	static bool GetKeyDown(eKeyCode keyCode) { return m_Keys[(UINT)keyCode].keyState == eKeyState::Down; }
+	static bool GetKeyUp(eKeyCode keyCode) { return m_Keys[(UINT)keyCode].keyState == eKeyState::Up; }
+	static bool GetKey(eKeyCode keyCode) { return m_Keys[(UINT)keyCode].keyState == eKeyState::Pressed; }
+
+private:
+	// 다른 클래스에서 호출될 함수가 아니면 private 영역에 넣기
+	static void createKeys();
+	static void updateKeys();
+	static void updateKey(Key& key);
+	static bool isKeyDown(eKeyCode keyCode);
+	static void updateKeyDown(Key& key);
+	static void updateKeyUp(Key& key);
+
 
 private:
 	static vector<Key> m_Keys;

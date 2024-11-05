@@ -12,48 +12,82 @@ int ASCII[(int)eKeyCode::End] =
 
 void Input::Initialize()
 {
+	createKeys();
+}
+
+void Input::Update()
+{
+	updateKeys();
+}
+
+void Input::createKeys()
+{
 	for (size_t i = 0; i < (UINT)eKeyCode::End; i++)	// enum class를 int형으로 형변환 (UINT)enumClass 이름
 	{
 		Key key = {};
 		key.bPressed = false;
-		key.state = eKeyState::None;
+		key.keyState = eKeyState::None;
 		key.keyCode = (eKeyCode)i;
 
 		m_Keys.push_back(key);	// 키 정보를 벡터에 저장
 	}
 }
 
-void Input::Update()
+void Input::updateKeys()
 {
-	for (size_t i = 0; i < m_Keys.size(); i++)
+	// 어떤 키가 눌렸는지 검사
+	for_each(m_Keys.begin(), m_Keys.end(),
+		[](Key& key) -> void
+		{
+			updateKey(key);
+		});
+}
+
+void Input::updateKey(Key& key)
+{
+	if (isKeyDown(key.keyCode))	// 키가 눌렸는지 여부
 	{
-		// 키가 눌리거나 누르고 있는 상태
-		if (GetAsyncKeyState(ASCII[i]) & 0x8000)
-		{
-			if (m_Keys[i].bPressed == true)
-			{
-				m_Keys[i].state = eKeyState::Pressed;
-			}
-			else
-			{
-				m_Keys[i].state = eKeyState::Down;
-			}
-
-			m_Keys[i].bPressed = true;
-		}
-		else	// 키가 안눌린 상태
-		{
-			// 이전 프레임에 키가 눌려져 있는 상태라면
-			if (m_Keys[i].bPressed == true)
-			{
-				m_Keys[i].state = eKeyState::Up;
-			}
-			else
-			{
-				m_Keys[i].state = eKeyState::None;
-			}
-
-			m_Keys[i].bPressed = false;
-		}
+		updateKeyDown(key);
 	}
+	else
+	{
+		updateKeyUp(key);
+	}
+}
+
+bool Input::isKeyDown(eKeyCode keyCode)
+{
+	return GetAsyncKeyState(ASCII[(UINT)keyCode]) & 0x8000;
+}
+
+void Input::updateKeyDown(Key& key)
+{
+	// 키를 누른 상황
+
+	if (key.bPressed == true)	// 이전 프레임부터 눌려있었다면
+	{
+		key.keyState = eKeyState::Pressed;
+	}
+	else
+	{
+		key.keyState = eKeyState::Down;
+	}
+
+	key.bPressed = true;
+}
+
+void Input::updateKeyUp(Key& key)
+{
+	// 키를 땐 상황
+
+	if (key.bPressed == true)	// 이전 프레임에 키가 눌려있었다면
+	{
+		key.keyState = eKeyState::Up;
+	}
+	else
+	{
+		key.keyState = eKeyState::None;
+	}
+
+	key.bPressed = false;
 }
