@@ -31,9 +31,9 @@ public:
 	static void Initialize();
 	static void Update();
 
-	static bool GetKeyDown(eKeyCode keyCode) { return m_Keys[(UINT)keyCode].keyState == eKeyState::Down; }
-	static bool GetKeyUp(eKeyCode keyCode) { return m_Keys[(UINT)keyCode].keyState == eKeyState::Up; }
-	static bool GetKey(eKeyCode keyCode) { return m_Keys[(UINT)keyCode].keyState == eKeyState::Pressed; }
+	static bool GetKeyDown(eKeyCode keyCode) { return s_Keys[(UINT)keyCode].keyState == eKeyState::Down; }
+	static bool GetKeyUp(eKeyCode keyCode) { return s_Keys[(UINT)keyCode].keyState == eKeyState::Up; }
+	static bool GetKey(eKeyCode keyCode) { return s_Keys[(UINT)keyCode].keyState == eKeyState::Pressed; }
 
 private:
 	// 다른 클래스에서 호출될 함수가 아니면 private 영역에 넣기
@@ -46,7 +46,7 @@ private:
 
 
 private:
-	static vector<Key> m_Keys;
+	static vector<Key> s_Keys;
 	
 };
 

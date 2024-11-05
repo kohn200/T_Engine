@@ -1,6 +1,6 @@
 #include "TDInput.h"
 
-vector<Input::Key> Input::m_Keys= {};
+vector<Input::Key> Input::s_Keys= {};
 
 int ASCII[(int)eKeyCode::End] =
 {
@@ -29,14 +29,14 @@ void Input::createKeys()
 		key.keyState = eKeyState::None;
 		key.keyCode = (eKeyCode)i;
 
-		m_Keys.push_back(key);	// 키 정보를 벡터에 저장
+		s_Keys.push_back(key);	// 키 정보를 벡터에 저장
 	}
 }
 
 void Input::updateKeys()
 {
 	// 어떤 키가 눌렸는지 검사
-	for_each(m_Keys.begin(), m_Keys.end(),
+	for_each(s_Keys.begin(), s_Keys.end(),
 		[](Key& key) -> void
 		{
 			updateKey(key);

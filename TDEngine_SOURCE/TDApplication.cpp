@@ -1,5 +1,6 @@
 #include "TDApplication.h"
 #include "TDInput.h"
+#include "TDTime.h"
 
 namespace TD
 {
@@ -22,6 +23,7 @@ namespace TD
 
 		m_Player.SetPosition(0.f, 0.f);
 		Input::Initialize();
+		Time::Initialize();
 	}
 
 	void Application::Run()
@@ -59,6 +61,8 @@ namespace TD
 		// 위의 코드는 GameObject의 Update()함수에 있는 것이 바람직한 거 같다.
 
 		Input::Update();
+		Time::Update();
+
 		m_Player.Update();
 	}
 
@@ -69,6 +73,7 @@ namespace TD
 
 	void Application::Render()
 	{
+		Time::Render(m_Hdc);
 		m_Player.Render(m_Hdc);
 	}
 }
