@@ -5,9 +5,6 @@ namespace TD
 	Application::Application()
 		: m_Hwnd(nullptr)
 		, m_Hdc(nullptr)
-		, m_Speed(0.0f)
-		, m_X(0.0f)
-		, m_Y(0.0f)
 	{
 
 	}
@@ -21,6 +18,8 @@ namespace TD
 	{
 		m_Hwnd = hwnd;
 		m_Hdc = GetDC(hwnd);
+
+		//m_Player.SetPosition(0.f, 0.f);
 	}
 
 	void Application::Run()
@@ -32,30 +31,32 @@ namespace TD
 
 	void Application::Update()
 	{
-		m_Speed += 0.1f;
-
 		// 오른쪽 키를 입력 -> x가 플러스
 		// 왼쪽 키를 입력 -> x가 마이너스
 
-		if (GetAsyncKeyState(VK_LEFT) & 0x8000)
-		{
-			m_X -= 0.01f;
-		}
+		//float x = m_Player.GetPositionX();
+		//float y = m_Player.GetPositionY();
+		//if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+		//{
+		//	x -= 0.01;
+		//}
+		//if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+		//{
+		//	x += 0.01;
+		//}
+		//if (GetAsyncKeyState(VK_UP) & 0x8000)
+		//{
+		//	y -= 0.01;
+		//}
+		//if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+		//{
+		//	y += 0.01;
+		//}
+		//// 키보드 입력으로 바뀐 플레이어의 위치 세팅
+		//m_Player.SetPosition(x, y);
+		// 위의 코드는 GameObject의 Update()함수에 있는 것이 바람직한 거 같다.
 
-		if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
-		{
-			m_X += 0.01f;
-		}
-
-		if (GetAsyncKeyState(VK_UP) & 0x8000)
-		{
-			m_Y -= 0.01f;
-		}
-
-		if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-		{
-			m_Y += 0.01f;
-		}
+		m_Player.Update();
 	}
 
 	void Application::LateUpdate()
@@ -65,17 +66,6 @@ namespace TD
 
 	void Application::Render()
 	{
-		HBRUSH BlueBrush = CreateSolidBrush(RGB(0, 0, 255));		 
-		HBRUSH OldBrush = (HBRUSH)SelectObject(m_Hdc, BlueBrush);    
-
-		HPEN RedPen = CreatePen(PS_DOT, 1, RGB(255, 0, 0));
-		HPEN OldPen = (HPEN)SelectObject(m_Hdc, RedPen);
-		SelectObject(m_Hdc, OldPen);
-
-		Rectangle(m_Hdc, 100 + m_X, 100 + m_Y, 200 + m_X, 200 + m_Y);
-
-		SelectObject(m_Hdc, OldBrush);		
-		DeleteObject(BlueBrush);			
-		DeleteObject(RedPen);
+		m_Player.Render(m_Hdc);
 	}
 }
