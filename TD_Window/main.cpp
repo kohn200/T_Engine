@@ -6,11 +6,11 @@
 
 //#pragma comment (lib, "..\\x64\\Debug\\TDEngine_Window.lib")
 
-#include "..\\TDEngine_SOURCE\\TDApplication.h"
+#include "..\\TDEngine_SOURCE\\TD_GameInstance.h"
 
 #define MAX_LOADSTRING 100
 
-TD::Application application;
+GameInstance gInstance;
 
 // 전역 변수:
 HINSTANCE hInst;                                // 현재 인스턴스입니다.
@@ -78,7 +78,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,             // 프로그램의 �
             // 즉, 게임 로직이 계속 돌다가 메세지가 있다면 위의 if()문으로 가게 된다.
 
 
-            application.Run();
+            gInstance.Run();
         }
     }
 
@@ -130,7 +130,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 
-   application.Initialize(hWnd);
+   gInstance.Initialize(hWnd);
 
    if (!hWnd)
    {

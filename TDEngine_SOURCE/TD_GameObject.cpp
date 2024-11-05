@@ -1,6 +1,6 @@
-#include "TDGameObject.h"
-#include "TDInput.h"
-#include "TDTime.h"
+#include "TD_GameObject.h"
+#include "TD_Input.h"
+#include "TD_Time.h"
 
 GameObject::GameObject()
 	: m_X(0.0f)

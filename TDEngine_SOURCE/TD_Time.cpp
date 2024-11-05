@@ -1,4 +1,4 @@
-#include "TDTime.h"
+#include "TD_Time.h"
 
 LARGE_INTEGER Time::s_CpuFrequency = {};
 LARGE_INTEGER Time::s_PrevFrequency = {};
@@ -28,12 +28,14 @@ void Time::Render(HDC hdc)
 {
 	static float time = 0.f;
 
+	// 경과 시간
 	time += s_DeltaTime;
 	wchar_t TimeStr[50] = L"";
 	swprintf_s(TimeStr, 50, L"Time: %f", time);
 	int Timelen = wcsnlen_s(TimeStr, 50);
 	TextOut(hdc, 0, 0, TimeStr, Timelen);
 
+	// FPS
 	float fps = 1.0f / s_DeltaTime;
 	wchar_t FpsStr[50] = L"";
 	swprintf_s(FpsStr, 50, L"FPS: %d", (int)fps);
