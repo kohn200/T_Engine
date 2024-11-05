@@ -1,4 +1,5 @@
 #include "TDGameObject.h"
+#include "TDInput.h"
 
 GameObject::GameObject()
 	: m_X(0.0f)
@@ -12,25 +13,23 @@ GameObject::~GameObject()
 
 void GameObject::Update()
 {
-	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+	if (Input::GetKey(eKeyCode::A))
 	{
 		m_X -= 0.01f;
 	}
-
-	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+	if (Input::GetKey(eKeyCode::D))
 	{
 		m_X += 0.01f;
 	}
-
-	if (GetAsyncKeyState(VK_UP) & 0x8000)
+	if (Input::GetKey(eKeyCode::W))
 	{
 		m_Y -= 0.01f;
 	}
-
-	if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+	if (Input::GetKey(eKeyCode::S))
 	{
 		m_Y += 0.01f;
 	}
+
 }
 
 void GameObject::LateUpdate()

@@ -1,4 +1,5 @@
 #include "TDApplication.h"
+#include "TDInput.h"
 
 namespace TD
 {
@@ -19,7 +20,8 @@ namespace TD
 		m_Hwnd = hwnd;
 		m_Hdc = GetDC(hwnd);
 
-		//m_Player.SetPosition(0.f, 0.f);
+		m_Player.SetPosition(0.f, 0.f);
+		Input::Initialize();
 	}
 
 	void Application::Run()
@@ -56,6 +58,7 @@ namespace TD
 		//m_Player.SetPosition(x, y);
 		// 위의 코드는 GameObject의 Update()함수에 있는 것이 바람직한 거 같다.
 
+		Input::Update();
 		m_Player.Update();
 	}
 
