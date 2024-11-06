@@ -17,6 +17,11 @@ public:
 	void Render();
 
 private:
+	void adjustWindowRect(HWND hwnd, UINT width, UINT height);
+	void createBuffer(UINT width, UINT height);
+	void initializeEtc();
+
+private:
 	HWND m_Hwnd;
 	HDC m_Hdc;
 	

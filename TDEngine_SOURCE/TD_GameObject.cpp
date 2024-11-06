@@ -33,7 +33,10 @@ void GameObject::Update()
 	{
 		m_Y += speed * Time::GetDeltaTime();
 	}
+	if (Input::GetKey(eKeyCode::SpaceBar))
+	{
 
+	}
 }
 
 void GameObject::LateUpdate()

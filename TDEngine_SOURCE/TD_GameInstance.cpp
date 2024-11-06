@@ -20,33 +20,13 @@ GameInstance::~GameInstance()
 
 void GameInstance::Initialize(HWND hwnd, UINT width, UINT height)
 {
-	m_Hwnd = hwnd;
-	m_Hdc = GetDC(hwnd);
+	adjustWindowRect(hwnd, width, height);
 
-	// BackBuffer(BackDC) 작업
-	RECT rect = { 0, 0, width, height };
-	AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
-
-	m_Width = rect.right - rect.left;
-	m_Height = rect.bottom - rect.top;
-	SetWindowPos(m_Hwnd, nullptr, 0, 0, m_Width, m_Height, 0);
-	
-	ShowWindow(m_Hwnd, true);
-
-	// 윈도우 해상도에 맞는 백버퍼(도화지) 생성
-	m_BackBuffer = CreateCompatibleBitmap(m_Hdc, width, height);
-
-	// 백버퍼를 가르킬 DC 생성
-	m_BackHdc = CreateCompatibleDC(m_Hdc);
-
-	HBITMAP oldBitmap = (HBITMAP)SelectObject(m_BackHdc, m_BackBuffer);
-	DeleteObject(oldBitmap);
-
+	createBuffer(width, height);
 
 	m_Player.SetPosition(0.f, 0.f);
 
-	Input::Initialize();
-	Time::Initialize();
+	initializeEtc();
 }
 
 void GameInstance::Run()
@@ -78,4 +58,38 @@ void GameInstance::Render()
 	
 	// BackBuffer에 있는걸 원본 Buffer에 복사(그려준다)
 	BitBlt(m_Hdc, 0, 0, m_Width, m_Height, m_BackHdc, 0, 0, SRCCOPY);
+}
+
+void GameInstance::adjustWindowRect(HWND hwnd, UINT width, UINT height)
+{
+	m_Hwnd = hwnd;
+	m_Hdc = GetDC(hwnd);
+
+	// BackBuffer(BackDC) 작업
+	RECT rect = { 0, 0, width, height };
+	AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+	m_Width = rect.right - rect.left;
+	m_Height = rect.bottom - rect.top;
+	SetWindowPos(m_Hwnd, nullptr, 0, 0, m_Width, m_Height, 0);
+
+	ShowWindow(m_Hwnd, true);
+}
+
+void GameInstance::createBuffer(UINT width, UINT height)
+{
+	// 윈도우 해상도에 맞는 백버퍼(도화지) 생성
+	m_BackBuffer = CreateCompatibleBitmap(m_Hdc, width, height);
+
+	// 백버퍼를 가르킬 DC 생성
+	m_BackHdc = CreateCompatibleDC(m_Hdc);
+
+	HBITMAP oldBitmap = (HBITMAP)SelectObject(m_BackHdc, m_BackBuffer);
+	DeleteObject(oldBitmap);
+}
+
+void GameInstance::initializeEtc()
+{
+	Input::Initialize();
+	Time::Initialize();
 }
