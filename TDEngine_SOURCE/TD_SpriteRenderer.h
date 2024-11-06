@@ -13,6 +13,11 @@ public:
 	virtual void LateUpdate() override;
 	virtual void Render(HDC hdc) override;
 
+	void ImageLoad(const wstring& path);
+
 private:
+	Gdiplus::Image* m_Image;
+	UINT m_Width;
+	UINT m_Height;
 };
 

@@ -4,16 +4,27 @@
     <Filter Include="Levels">
       <UniqueIdentifier>{620c82b4-0fa0-421c-881f-9cfa63b2f628}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{2db103d9-b86c-4aa0-ae77-bccdd4342bb4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TD_LoadLevel.h">
       <Filter>Levels</Filter>
     </ClInclude>
-    <ClInclude Include="TD_PlayLevel.h" />
-    <ClInclude Include="TD_Player.h" />
+    <ClInclude Include="TD_Player.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="TD_PlayLevel.h">
+      <Filter>Levels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TD_PlayLevel.cpp" />
-    <ClCompile Include="TD_Player.cpp" />
+    <ClCompile Include="TD_Player.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="TD_PlayLevel.cpp">
+      <Filter>Levels</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

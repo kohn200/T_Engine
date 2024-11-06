@@ -2,34 +2,23 @@
 #include "TD_Entity.h"
 #include "TD_Component.h"
 
-struct Pos
-{
-	int mX;
-	int mY;
-};
+using namespace math;
 
 class Transform : public Component
 {
 public:
-	Transform();
-	~Transform();
-
-	virtual void Initialize() override;
-	virtual void Update() override;
 	virtual void LateUpdate() override;
 	virtual void Render(HDC hdc) override;
 
-	void SetPos(int x, int y) 
+	void SetPos(Vector2 pos) 
 	{
-		m_X = x;
-		m_Y = y;
+		m_Position.x = pos.x;
+		m_Position.y = pos.y;
 	}
 
-	int GetX() { return m_X; }
-	int GetY() { return m_Y; }
+	Vector2 GetPos() { return m_Position; }
 
 private:
-	int m_X;
-	int m_Y;
+	Vector2 m_Position;
 };
 

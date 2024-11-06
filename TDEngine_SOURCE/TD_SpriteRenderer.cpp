@@ -3,6 +3,9 @@
 #include "TD_Transform.h"
 
 SpriteRenderer::SpriteRenderer()
+	: m_Image(nullptr)
+	, m_Width(0)
+	, m_Height(0)
 {
 }
 
@@ -24,18 +27,16 @@ void SpriteRenderer::LateUpdate()
 
 void SpriteRenderer::Render(HDC hdc)
 {
-	//파랑 브러쉬 생성
-	HBRUSH blueBrush = CreateSolidBrush(RGB(rand() % 255, rand() % 255, rand() % 255));
-	// 파랑 브러쉬 DC에 선택 그리고 흰색 브러쉬 반환값 반환
-	HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, blueBrush);
-	HPEN redPen = CreatePen(PS_SOLID, 2, RGB(rand() % 255, rand() % 255, rand() % 255));
-	HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
-	SelectObject(hdc, oldPen);
-
 	Transform* tr = GetOwner()->GetComponent<Transform>();
-	Rectangle(hdc, tr->GetX(), tr->GetY(), tr->GetX() + 100, tr->GetY() + 100);
+	Vector2 pos = tr->GetPos();
 
-	SelectObject(hdc, oldBrush);
-	DeleteObject(blueBrush);
-	DeleteObject(redPen);
+	Gdiplus::Graphics graphics(hdc);
+	graphics.DrawImage(m_Image, Gdiplus::Rect(pos.x, pos.y, m_Width, m_Height));
+}
+
+void SpriteRenderer::ImageLoad(const wstring& path)
+{
+	m_Image = Gdiplus::Image::FromFile(path.c_str());
+	m_Width = m_Image->GetWidth();
+	m_Height = m_Image->GetHeight();
 }

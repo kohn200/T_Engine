@@ -15,16 +15,16 @@ PlayLevel::~PlayLevel()
 void PlayLevel::Initialize()
 {
 	{
-		Player* player = new Player();
-
-		Transform* tr = player->AddComponent<Transform>();
-		tr->SetPos(800, 450);
+		Player* bg = new Player();
+		Transform* tr = bg->AddComponent<Transform>();
+		tr->SetPos(Vector2(750, 200));
 		tr->SetName(L"TR");
 
-		SpriteRenderer* sr = player->AddComponent<SpriteRenderer>();
+		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
 		sr->SetName(L"SR");
+		sr->ImageLoad(L"D:\\C++\\T_Engine\\Resources\\PurplePotion.png");
 
-		AddGameObject(player);
+		AddGameObject(bg);
 	}
 }
 
