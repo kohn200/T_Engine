@@ -5,6 +5,10 @@
 GameInstance::GameInstance()
 	: m_Hwnd(nullptr)
 	, m_Hdc(nullptr)
+	, m_Width(0)
+	, m_Height(0)
+	, m_BackHdc(nullptr)
+	, m_BackBuffer(nullptr)
 {
 
 }
@@ -14,12 +18,33 @@ GameInstance::~GameInstance()
 
 }
 
-void GameInstance::Initialize(HWND hwnd)
+void GameInstance::Initialize(HWND hwnd, UINT width, UINT height)
 {
 	m_Hwnd = hwnd;
 	m_Hdc = GetDC(hwnd);
 
+	// BackBuffer(BackDC) 작업
+	RECT rect = { 0, 0, width, height };
+	AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+	m_Width = rect.right - rect.left;
+	m_Height = rect.bottom - rect.top;
+	SetWindowPos(m_Hwnd, nullptr, 0, 0, m_Width, m_Height, 0);
+	
+	ShowWindow(m_Hwnd, true);
+
+	// 윈도우 해상도에 맞는 백버퍼(도화지) 생성
+	m_BackBuffer = CreateCompatibleBitmap(m_Hdc, width, height);
+
+	// 백버퍼를 가르킬 DC 생성
+	m_BackHdc = CreateCompatibleDC(m_Hdc);
+
+	HBITMAP oldBitmap = (HBITMAP)SelectObject(m_BackHdc, m_BackBuffer);
+	DeleteObject(oldBitmap);
+
+
 	m_Player.SetPosition(0.f, 0.f);
+
 	Input::Initialize();
 	Time::Initialize();
 }
@@ -33,31 +58,6 @@ void GameInstance::Run()
 
 void GameInstance::Update()
 {
-	// 오른쪽 키를 입력 -> x가 플러스
-	// 왼쪽 키를 입력 -> x가 마이너스
-
-	//float x = m_Player.GetPositionX();
-		//float y = m_Player.GetPositionY();
-		//if (GetAsyncKeyState(VK_LEFT) & 0x8000)
-		//{
-		//	x -= 0.01;
-		//}
-		//if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
-		//{
-		//	x += 0.01;
-		//}
-		//if (GetAsyncKeyState(VK_UP) & 0x8000)
-		//{
-		//	y -= 0.01;
-		//}
-		//if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-		//{
-		//	y += 0.01;
-		//}
-		//// 키보드 입력으로 바뀐 플레이어의 위치 세팅
-		//m_Player.SetPosition(x, y);
-		// 위의 코드는 GameObject의 Update()함수에 있는 것이 바람직한 거 같다.
-
 	Input::Update();
 	Time::Update();
 
@@ -71,6 +71,11 @@ void GameInstance::LateUpdate()
 
 void GameInstance::Render()
 {
-	Time::Render(m_Hdc);
-	m_Player.Render(m_Hdc);
+	Rectangle(m_BackHdc, 0, 0, 1600, 900);
+
+	Time::Render(m_BackHdc);
+	m_Player.Render(m_BackHdc);
+	
+	// BackBuffer에 있는걸 원본 Buffer에 복사(그려준다)
+	BitBlt(m_Hdc, 0, 0, m_Width, m_Height, m_BackHdc, 0, 0, SRCCOPY);
 }

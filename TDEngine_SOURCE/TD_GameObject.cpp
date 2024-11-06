@@ -46,16 +46,16 @@ void GameObject::Render(HDC hdc)
 	HBRUSH BlueBrush = CreateSolidBrush(RGB(0, 0, 255));
 	HBRUSH OldBrush = (HBRUSH)SelectObject(hdc, BlueBrush);
 
-	HPEN RedPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-	HPEN OldPen = (HPEN)SelectObject(hdc, RedPen);
+	//HPEN RedPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+	//HPEN OldPen = (HPEN)SelectObject(hdc, RedPen);
 
 	Rectangle(hdc, 100 + m_X, 100 + m_Y, 200 + m_X, 200 + m_Y);
 
 	SelectObject(hdc, OldBrush);
 	DeleteObject(BlueBrush);
 
-	SelectObject(hdc, OldPen);
-	DeleteObject(RedPen);
+	//SelectObject(hdc, OldPen);
+	//DeleteObject(RedPen);
 }
 
 void GameObject::SetPosition(float x, float y)
