@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_GameInstance.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_GameObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Input.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Level.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_LevelManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Time.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Entity.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Transform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Component.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_SpriteRenderer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_GameInstance.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_GameObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Input.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Level.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_LevelManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Time.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Entity.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Transform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Component.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_SpriteRenderer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>{9bb95308-70e7-4285-a2c5-7ddfe189d15b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

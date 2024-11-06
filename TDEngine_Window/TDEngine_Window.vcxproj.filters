@@ -10,8 +10,10 @@
       <Filter>Levels</Filter>
     </ClInclude>
     <ClInclude Include="TD_PlayLevel.h" />
+    <ClInclude Include="TD_Player.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TD_PlayLevel.cpp" />
+    <ClCompile Include="TD_Player.cpp" />
   </ItemGroup>
 </Project>

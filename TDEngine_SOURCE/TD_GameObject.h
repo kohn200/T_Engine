@@ -1,23 +1,44 @@
 #pragma once
 #include "CommonInclude.h"
+#include "TD_Component.h"
 
 class GameObject
 {
 public:
 	GameObject();
-	~GameObject();
+	virtual ~GameObject();
 
-	void Update();
-	void LateUpdate();
-	void Render(HDC hdc);
+	virtual void Initialize();
+	virtual void Update();
+	virtual void LateUpdate();
+	virtual void Render(HDC hdc);
 
-	float GetPositionX() { return m_X; }
-	float GetPositionY() { return m_Y; }
+	template <typename T>
+	T* AddComponent()
+	{
+		T* comp = new T();
+		comp->SetOwner(this);
+		m_Components.push_back(comp);
 
-	void SetPosition(float x, float y);
+		return comp;
+	}
+
+	template <typename T>
+	T* GetComponent()
+	{
+		T* component = nullptr;
+
+		for (Component* comp : m_Components)
+		{
+			component = dynamic_cast<T*>(comp);
+			if (component)
+				break;
+		}
+
+		return component;
+	}
 
 private:
-	float m_X;
-	float m_Y;
+	vector<Component*> m_Components;
 };
 

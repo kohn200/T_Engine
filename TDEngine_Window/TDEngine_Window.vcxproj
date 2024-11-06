@@ -133,9 +133,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="TD_LoadLevel.h" />
+    <ClInclude Include="TD_Player.h" />
     <ClInclude Include="TD_PlayLevel.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="TD_Player.cpp" />
     <ClCompile Include="TD_PlayLevel.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
