@@ -1,6 +1,7 @@
 #include "TD_GameInstance.h"
 #include "TD_Input.h"
 #include "TD_Time.h"
+#include "TD_LevelManager.h"
 
 GameInstance::GameInstance()
 	: m_Hwnd(nullptr)
@@ -9,6 +10,7 @@ GameInstance::GameInstance()
 	, m_Height(0)
 	, m_BackHdc(nullptr)
 	, m_BackBuffer(nullptr)
+	//, m_Levels{}
 {
 
 }
@@ -24,9 +26,9 @@ void GameInstance::Initialize(HWND hwnd, UINT width, UINT height)
 
 	createBuffer(width, height);
 
-	m_Player.SetPosition(0.f, 0.f);
-
 	initializeEtc();
+
+	LevelManager::Initialize();
 }
 
 void GameInstance::Run()
@@ -40,8 +42,7 @@ void GameInstance::Update()
 {
 	Input::Update();
 	Time::Update();
-
-	m_Player.Update();
+	LevelManager::Update();
 }
 
 void GameInstance::LateUpdate()
@@ -51,13 +52,24 @@ void GameInstance::LateUpdate()
 
 void GameInstance::Render()
 {
-	Rectangle(m_BackHdc, 0, 0, 1600, 900);
+	clearRenderTarget();
 
 	Time::Render(m_BackHdc);
-	m_Player.Render(m_BackHdc);
-	
+	LevelManager::Render(m_BackHdc);
+
+	copyRenderTarget(m_Hdc, m_BackHdc);
+}
+
+void GameInstance::clearRenderTarget()
+{
+	// 상단에 줄 표시되어 있는거 지우기
+	Rectangle(m_BackHdc, -1, -1, 1601, 901);
+}
+
+void GameInstance::copyRenderTarget(HDC source, HDC dest)
+{
 	// BackBuffer에 있는걸 원본 Buffer에 복사(그려준다)
-	BitBlt(m_Hdc, 0, 0, m_Width, m_Height, m_BackHdc, 0, 0, SRCCOPY);
+	BitBlt(source, 0, 0, m_Width, m_Height, dest, 0, 0, SRCCOPY);
 }
 
 void GameInstance::adjustWindowRect(HWND hwnd, UINT width, UINT height)

@@ -15,15 +15,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Entity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_GameInstance.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_GameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_Input.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Level.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_LevelManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_Time.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Entity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_GameInstance.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_Input.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Level.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_LevelManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_Time.cpp" />
   </ItemGroup>
 </Project>

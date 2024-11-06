@@ -7,6 +7,7 @@
 //#pragma comment (lib, "..\\x64\\Debug\\TDEngine_Window.lib")
 
 #include "..\\TDEngine_SOURCE\\TD_GameInstance.h"
+#include "..\\TDEngine_Window\\TD_LoadLevel.h"
 
 #define MAX_LOADSTRING 100
 
@@ -142,6 +143,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
+
+   // 로드 레벨
+   TD::LoadLevels();
 
    return TRUE;
 }
