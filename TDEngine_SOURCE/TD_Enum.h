@@ -9,3 +9,13 @@ enum class eLayerType
 	Player,
 	Max = 16,
 };
+
+enum class eAssetType
+{
+	Texture,		// 이미지
+	// Actor,
+	// Shader,
+	Sound,			// 사운드
+	SaveGame,		// 데이터 저장
+	End,
+};

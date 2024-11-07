@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="TD_LoadAssets.h" />
     <ClInclude Include="TD_LoadLevel.h" />
     <ClInclude Include="TD_Player.h" />
     <ClInclude Include="TD_PlayLevel.h" />

@@ -26,9 +26,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_LevelManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_math.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_Object.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Resource.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Resources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Asset.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Assets.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_SpriteRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_Time.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_Transform.h" />
   </ItemGroup>
@@ -42,9 +43,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_Level.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_LevelManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_math.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Resource.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Resources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Asset.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Assets.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_SpriteRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Texture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_Time.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_Transform.cpp" />
   </ItemGroup>

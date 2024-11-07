@@ -2,10 +2,11 @@
 #include "TD_GameObject.h"
 #include "TD_Transform.h"
 
+
 SpriteRenderer::SpriteRenderer()
-	: m_Image(nullptr)
-	, m_Width(0)
-	, m_Height(0)
+	: Component()
+	, m_Texture(nullptr)
+	, m_Scale(Vector2::One)
 {
 }
 
@@ -27,16 +28,21 @@ void SpriteRenderer::LateUpdate()
 
 void SpriteRenderer::Render(HDC hdc)
 {
+	if (m_Texture == nullptr)
+		return;
+
 	Transform* tr = GetOwner()->GetComponent<Transform>();
 	Vector2 pos = tr->GetPos();
 
-	Gdiplus::Graphics graphics(hdc);
-	graphics.DrawImage(m_Image, Gdiplus::Rect(pos.x, pos.y, m_Width, m_Height));
+	if (m_Texture->GetTextureType() == eTextureType::Bmp)
+	{
+		TransparentBlt(hdc, pos.x, pos.y, m_Texture->GetWidth(), m_Texture->GetHeight(), m_Texture->GetHdc(),
+			0, 0, m_Texture->GetWidth(), m_Texture->GetHeight(), RGB(255,0,255));
+	}
+	else if (m_Texture->GetTextureType() == eTextureType::Png)
+	{
+		Gdiplus::Graphics graphics(hdc);
+		graphics.DrawImage(m_Texture->GetImage(), Gdiplus::Rect(pos.x, pos.y, m_Texture->GetWidth(), m_Texture->GetHeight()));
+	}
 }
 
-void SpriteRenderer::ImageLoad(const wstring& path)
-{
-	m_Image = Gdiplus::Image::FromFile(path.c_str());
-	m_Width = m_Image->GetWidth();
-	m_Height = m_Image->GetHeight();
-}

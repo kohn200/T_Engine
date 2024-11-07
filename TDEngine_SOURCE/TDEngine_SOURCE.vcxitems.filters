@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)TD_GameInstance.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_Entity.cpp">
       <Filter>Common</Filter>
     </ClCompile>
@@ -23,8 +22,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_Time.cpp">
       <Filter>Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Resources.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Resource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_SpriteRenderer.cpp">
       <Filter>Component</Filter>
     </ClCompile>
@@ -34,10 +31,23 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_math.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Layer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Asset.cpp">
+      <Filter>Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Assets.cpp">
+      <Filter>Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Layer.cpp">
+      <Filter>Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_Texture.cpp">
+      <Filter>Asset\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_GameInstance.cpp">
+      <Filter>GameInstance</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)TD_GameInstance.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
       <Filter>Common</Filter>
     </ClInclude>
@@ -62,8 +72,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_Time.h">
       <Filter>Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Resources.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Resource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_SpriteRenderer.h">
       <Filter>Component</Filter>
     </ClInclude>
@@ -73,12 +81,26 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_math.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Layer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_Enum.h">
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_Object.h">
       <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Assets.h">
+      <Filter>Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Asset.h">
+      <Filter>Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Layer.h">
+      <Filter>Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Texture.h">
+      <Filter>Asset\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_GameInstance.h">
+      <Filter>GameInstance</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +121,15 @@
     </Filter>
     <Filter Include="Layer">
       <UniqueIdentifier>{dbd4f0c1-110c-4ca6-84d4-fd8d7b5aa7ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Asset">
+      <UniqueIdentifier>{62951755-89d0-4ac3-a87d-1de749bd2f06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Asset\Texture">
+      <UniqueIdentifier>{96c791c2-7a88-4827-b20e-c7e024a834ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameInstance">
+      <UniqueIdentifier>{cb89e5f2-b263-4b9b-876c-fa818bb7c6d7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

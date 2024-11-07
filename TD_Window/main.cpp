@@ -8,6 +8,7 @@
 
 #include "..\\TDEngine_SOURCE\\TD_GameInstance.h"
 #include "..\\TDEngine_Window\\TD_LoadLevel.h"
+#include "..\\TDEngine_Window\\TD_LoadAssets.h"
 
 #define MAX_LOADSTRING 100
 
@@ -86,7 +87,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,             // 프로그램의 �
         }
     }
     
-    Gdiplus::GdiplusShutdown(gpToken);
+    Gdiplus::GdiplusShutdown(gpToken);  // 종료
 
     return (int) msg.wParam;
 }
@@ -150,6 +151,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
+
+   // 로드 에셋
+   TD::LoadAssets();
 
    // 로드 레벨
    TD::LoadLevels();

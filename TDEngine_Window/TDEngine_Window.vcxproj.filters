@@ -21,6 +21,7 @@
     <ClInclude Include="TD_TitleLevel.h">
       <Filter>Levels</Filter>
     </ClInclude>
+    <ClInclude Include="TD_LoadAssets.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TD_Player.cpp">
