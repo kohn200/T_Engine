@@ -21,7 +21,7 @@ void PlayLevel::Initialize()
 	{
 		bg = new Player();
 		Transform* tr = bg->AddComponent<Transform>();
-		tr->SetPos(Vector2(750, 200));
+		tr->SetPos(Vector2(0, 0));
 		tr->SetName(L"TR");
 
 		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();

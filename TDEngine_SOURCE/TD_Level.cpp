@@ -57,7 +57,7 @@ void Level::LateUpdate()
 		if (GameLayer == nullptr)
 			continue;
 
-		GameLayer->Update();
+		GameLayer->LateUpdate();
 	}
 }
 
@@ -68,7 +68,7 @@ void Level::Render(HDC hdc)
 		if (GameLayer == nullptr)
 			continue;
 
-		GameLayer->Update();
+		GameLayer->Render(hdc);
 	}
 }
 
