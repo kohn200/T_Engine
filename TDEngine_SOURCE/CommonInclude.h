@@ -16,5 +16,7 @@
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus.lib")
 
+#include "TD_Enum.h"
+
 #include <iostream>
 using namespace std;

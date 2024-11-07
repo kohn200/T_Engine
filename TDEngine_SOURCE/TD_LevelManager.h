@@ -1,7 +1,7 @@
 #pragma once
 #include "CommonInclude.h"
+#include "TD_Level.h"
 
-class Level;
 
 class LevelManager
 {
@@ -20,6 +20,9 @@ public:
 
 	static Level* LoadLevel(const wstring& name)
 	{
+		if(m_CurrentLevel != nullptr)
+			m_CurrentLevel->OnExit();	// 현재 레벨에서 나갈때 마다 기존에 있던 것들 해제
+
 		// 현재 레벨을 로드
 		map<wstring, Level*>::iterator iter = m_Levels.find(name);
 
@@ -29,6 +32,7 @@ public:
 
 		// 있다면 현재 레벨에 저장
 		m_CurrentLevel = iter->second;
+		m_CurrentLevel->OnEnter();
 
 		return iter->second;
 	}

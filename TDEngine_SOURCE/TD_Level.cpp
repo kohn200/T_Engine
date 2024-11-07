@@ -2,8 +2,19 @@
 #include "TD_GameObject.h"
 
 Level::Level()
-	: m_GameObjects{}
+	: m_Layers{}
 {
+	m_Layers.resize((UINT)eLayerType::Max);
+	
+	//std::for_each(m_Layers.begin(), m_Layers.end(),
+	//	[](Layer*& layer){	// 포인터 참조 *&
+	//		layer = new Layer();
+	//	});
+	
+	for (size_t i = 0; i < (UINT)eLayerType::Max; i++)
+	{
+		m_Layers[i] = new Layer();
+	}
 }
 
 Level::~Level()
@@ -12,6 +23,13 @@ Level::~Level()
 
 void Level::Initialize()
 {
+	for (auto GameLayer : m_Layers)
+	{
+		if (GameLayer == nullptr)
+			continue;
+
+		GameLayer->Initialize();
+	}
 }
 
 void Level::Update()
@@ -23,35 +41,47 @@ void Level::Update()
 	//}
 
 	// 범위기반 for문
-	for (auto GameObject : m_GameObjects)
+	for (auto GameLayer : m_Layers)
 	{
-		GameObject->Update();
+		if (GameLayer == nullptr)
+			continue;
+
+		GameLayer->Update();
 	}
 }
 
 void Level::LateUpdate()
 {
-	for (auto GameObject : m_GameObjects)
+	for (auto GameLayer : m_Layers)
 	{
-		GameObject->LateUpdate();
+		if (GameLayer == nullptr)
+			continue;
+
+		GameLayer->Update();
 	}
 }
 
 void Level::Render(HDC hdc)
 {
-	for (auto GameObject : m_GameObjects)
+	for (auto GameLayer : m_Layers)
 	{
-		GameObject->Render(hdc);
+		if (GameLayer == nullptr)
+			continue;
+
+		GameLayer->Update();
 	}
 }
 
-void Level::AddGameObject(GameObject* gameObject)
+void Level::AddGameObject(GameObject* gameObject, const eLayerType type)
 {
-	m_GameObjects.push_back(gameObject);
-	// Level의 m_GameObject를 protected로 하여 자식 클래스가 사용할 수 있게 하지 않고
-	// 자식 클래스에서 AddGameObject()함수를 불러서 사용한 이유는
+	m_Layers[(UINT)type]->AddGameObject(gameObject);
+}
 
-	// m_GameObject는 씬, 충돌, 로직 여러방면에서 사용되고 있기 때문에
-	// private로 데이터에 직접 접근 못하게 막아 프로그램에 미칠 영향력이 적어지게끔 하였고,
-	// AddGameObject()함수를 통해서만 m_GameObject에 접근하여 예외처리를 하여 안정성을 확보하기 위함이다.
+void Level::OnEnter()
+{
+
+}
+void Level::OnExit()
+{
+
 }

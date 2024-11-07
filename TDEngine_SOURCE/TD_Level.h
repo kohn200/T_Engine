@@ -1,7 +1,7 @@
 #pragma once
 #include "TD_Entity.h"
+#include "TD_Layer.h"
 
-class GameObject;
 
 class Level : public Entity
 {
@@ -13,9 +13,14 @@ public:
 	virtual void Update();
 	virtual void LateUpdate();
 	virtual void Render(HDC hdc);
-	
-	void AddGameObject(GameObject* gameObject);
+
+	virtual void OnEnter();
+	virtual void OnExit();
+
+	void AddGameObject(GameObject* gameObject, const eLayerType type);
+
 protected:
-	vector<GameObject*> m_GameObjects;
+	vector<Layer*> m_Layers;
+
 };
 

@@ -1,12 +1,11 @@
 #pragma once
 #include "..\\TDEngine_SOURCE\\TD_Level.h"
 
-
-class PlayLevel : public Level
+class TitleLevel : public Level
 {
 public:
-	PlayLevel();
-	~PlayLevel();
+	TitleLevel();
+	~TitleLevel();
 
 	virtual void Initialize() override;
 	virtual void Update() override;
@@ -17,6 +16,6 @@ public:
 	virtual void OnExit() override;
 
 private:
-	class Player* bg;
+
 };
 

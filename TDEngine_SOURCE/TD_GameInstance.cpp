@@ -47,7 +47,7 @@ void GameInstance::Update()
 
 void GameInstance::LateUpdate()
 {
-
+	LevelManager::LateUpdate();
 }
 
 void GameInstance::Render()

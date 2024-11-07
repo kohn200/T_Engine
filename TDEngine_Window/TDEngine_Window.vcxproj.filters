@@ -18,12 +18,18 @@
     <ClInclude Include="TD_PlayLevel.h">
       <Filter>Levels</Filter>
     </ClInclude>
+    <ClInclude Include="TD_TitleLevel.h">
+      <Filter>Levels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TD_Player.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="TD_PlayLevel.cpp">
+      <Filter>Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="TD_TitleLevel.cpp">
       <Filter>Levels</Filter>
     </ClCompile>
   </ItemGroup>
