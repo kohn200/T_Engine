@@ -7,6 +7,9 @@ using namespace math;
 class Transform : public Component
 {
 public:
+	Transform();
+	~Transform();
+
 	virtual void LateUpdate() override;
 	virtual void Render(HDC hdc) override;
 

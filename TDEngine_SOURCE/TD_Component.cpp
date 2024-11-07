@@ -1,8 +1,9 @@
 #include "TD_Component.h"
 #include "TD_GameObject.h"
 
-Component::Component()
+Component::Component(eComponentType type)
 	: m_Owner(nullptr)
+	, m_ComponentType(type)
 {
 }
 

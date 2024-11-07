@@ -16,14 +16,6 @@ void Player::Update()
 void Player::LateUpdate()
 {
 	GameObject::LateUpdate();
-
-	if (Input::GetKey(eKeyCode::Right))
-	{
-		Transform* tr = GetComponent<Transform>();
-		Vector2 pos = tr->GetPos();
-		pos.x += 100.f * Time::GetDeltaTime();
-		tr->SetPos(pos);
-	}
 }
 
 void Player::Render(HDC hdc)

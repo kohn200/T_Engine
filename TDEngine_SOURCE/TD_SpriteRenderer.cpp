@@ -4,7 +4,7 @@
 
 
 SpriteRenderer::SpriteRenderer()
-	: Component()
+	: Component(eComponentType::SpriteRenderer)
 	, m_Texture(nullptr)
 	, m_Scale(Vector2::One)
 {

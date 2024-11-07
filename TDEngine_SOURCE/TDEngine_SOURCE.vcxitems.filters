@@ -46,6 +46,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)TD_GameInstance.cpp">
       <Filter>GameInstance</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)TD_ScriptComponent.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -101,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_GameInstance.h">
       <Filter>GameInstance</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_ScriptComponent.h">
+      <Filter>Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

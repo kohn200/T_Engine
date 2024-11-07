@@ -9,6 +9,7 @@
 #include "TD_Object.h"
 #include "TD_Assets.h"
 #include "TD_Texture.h"
+#include "TD_PlayerScript.h"
 
 PlayLevel::PlayLevel()
 	: bg(nullptr)
@@ -21,35 +22,20 @@ PlayLevel::~PlayLevel()
 
 void PlayLevel::Initialize()
 {
-	{
-		// 게임 오브젝트 만들기전에 리소스들 전부 Load해둔다.
 
-	/*	bg = new Player();
-		Transform* tr = bg->AddComponent<Transform>();
-		tr->SetPos(Vector2(0, 0));
-		tr->SetName(L"TR");
+	// 게임 오브젝트 만들기전에 리소스들 전부 Load해둔다.
 
-		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
-		sr->SetName(L"SR");
-		sr->ImageLoad(L"D:\\C++\\T_Engine\\Resources\\PurplePotion.png");
+	bg = Instantiate<Player>(eLayerType::BackGround, Vector2(100.f, 100.f));
 
-		AddGameObject(bg, eLayerType::BackGround);*/
+	SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
+	sr->SetTexture(Assets::Find<Texture>(L"BG"));
 
-		bg = Instantiate<Player>(eLayerType::BackGround, Vector2(100.f, 100.f));
-		
-		//SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
-		//sr->SetName(L"SR");
-		//sr->ImageLoad(L"D:\\C++\\T_Engine\\Resources\\PurplePotion.png");
+	//bg->AddComponent<ScriptComponent>();	기존에는 ScriptComponent로 만들어서 PlayerScript::Update()에 들어오지 않았던거임..
+	bg->AddComponent<PlayerScript>();
 
-		//Texture* tex = new Texture();
-		//tex->Load(L"D:\\C++\\T_Engine\\Resources\\PurplePotion.png")
+	// 게임 오브젝트 생성후 레이어와 게임오브젝트들의 init()함수 호출
+	Level::Initialize();
 
-		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
-		sr->SetTexture(Assets::Find<Texture>(L"BG"));
-
-		// 게임 오브젝트 생성후 레이어와 게임오브젝트들의 init()함수 호출
-		Level::Initialize();
-	}
 }
 
 void PlayLevel::Update()

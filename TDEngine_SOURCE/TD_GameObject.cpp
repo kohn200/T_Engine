@@ -5,6 +5,7 @@
 
 GameObject::GameObject()
 {
+	m_Components.resize((UINT)eComponentType::End);
 	initTransform();
 }
 
@@ -21,6 +22,9 @@ void GameObject::Initialize()
 {
 	for (Component* comp : m_Components)
 	{
+		if (comp == nullptr)
+			continue;
+
 		comp->Initialize();
 	}
 }
@@ -29,6 +33,9 @@ void GameObject::Update()
 {
 	for (Component* comp : m_Components)
 	{
+		if (comp == nullptr)
+			continue;
+
 		comp->Update();
 	}
 }
@@ -37,6 +44,9 @@ void GameObject::LateUpdate()
 {
 	for (Component* comp : m_Components)
 	{
+		if (comp == nullptr)
+			continue;
+
 		comp->LateUpdate();
 	}
 }
@@ -45,6 +55,9 @@ void GameObject::Render(HDC hdc)
 {
 	for (Component* comp : m_Components)
 	{
+		if (comp == nullptr)
+			continue;
+
 		comp->Render(hdc);
 	}
 	

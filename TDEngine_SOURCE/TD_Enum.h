@@ -1,5 +1,13 @@
 #pragma once
 
+enum class eComponentType
+{
+	Transform,
+	SpriteRenderer,
+	Script,
+	End,
+};
+
 enum class eLayerType
 {
 	None,
