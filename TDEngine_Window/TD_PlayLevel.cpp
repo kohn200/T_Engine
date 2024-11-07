@@ -6,6 +6,7 @@
 #include "TD_Input.h"
 #include "TD_TitleLevel.h"
 #include "TD_LevelManager.h"
+#include "TD_Object.h"
 
 PlayLevel::PlayLevel()
 	: bg(nullptr)
@@ -19,7 +20,7 @@ PlayLevel::~PlayLevel()
 void PlayLevel::Initialize()
 {
 	{
-		bg = new Player();
+	/*	bg = new Player();
 		Transform* tr = bg->AddComponent<Transform>();
 		tr->SetPos(Vector2(0, 0));
 		tr->SetName(L"TR");
@@ -28,7 +29,13 @@ void PlayLevel::Initialize()
 		sr->SetName(L"SR");
 		sr->ImageLoad(L"D:\\C++\\T_Engine\\Resources\\PurplePotion.png");
 
-		AddGameObject(bg, eLayerType::BackGround);
+		AddGameObject(bg, eLayerType::BackGround);*/
+
+		bg = Instantiate<Player>(eLayerType::BackGround, Vector2(100.f, 100.f));
+		
+		SpriteRenderer* sr = bg->AddComponent<SpriteRenderer>();
+		sr->SetName(L"SR");
+		sr->ImageLoad(L"D:\\C++\\T_Engine\\Resources\\PurplePotion.png");
 	}
 }
 

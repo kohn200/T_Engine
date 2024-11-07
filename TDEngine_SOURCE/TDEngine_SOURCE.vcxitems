@@ -25,6 +25,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_Level.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_LevelManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_math.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TD_Object.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_Resource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_Resources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)TD_SpriteRenderer.h" />

@@ -18,6 +18,10 @@ public:
 	virtual void OnExit();
 
 	void AddGameObject(GameObject* gameObject, const eLayerType type);
+	Layer* GetLayer(const eLayerType type) { return m_Layers[(UINT)type]; }
+
+private:
+	void createLayer();
 
 protected:
 	vector<Layer*> m_Layers;

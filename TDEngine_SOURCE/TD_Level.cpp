@@ -4,17 +4,7 @@
 Level::Level()
 	: m_Layers{}
 {
-	m_Layers.resize((UINT)eLayerType::Max);
-	
-	//std::for_each(m_Layers.begin(), m_Layers.end(),
-	//	[](Layer*& layer){	// 포인터 참조 *&
-	//		layer = new Layer();
-	//	});
-	
-	for (size_t i = 0; i < (UINT)eLayerType::Max; i++)
-	{
-		m_Layers[i] = new Layer();
-	}
+	createLayer();
 }
 
 Level::~Level()
@@ -84,4 +74,19 @@ void Level::OnEnter()
 void Level::OnExit()
 {
 
+}
+
+void Level::createLayer()
+{
+	m_Layers.resize((UINT)eLayerType::Max);
+
+	std::for_each(m_Layers.begin(), m_Layers.end(),
+		[](Layer*& layer){	// 포인터 참조 *&
+			layer = new Layer();
+		});
+
+	//for (size_t i = 0; i < (UINT)eLayerType::Max; i++)
+	//{
+	//	m_Layers[i] = new Layer();
+	//}
 }

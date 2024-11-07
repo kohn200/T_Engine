@@ -1,9 +1,11 @@
 #include "TD_GameObject.h"
 #include "TD_Input.h"
 #include "TD_Time.h"
+#include "TD_Transform.h"
 
 GameObject::GameObject()
 {
+	initTransform();
 }
 
 GameObject::~GameObject()
@@ -62,4 +64,9 @@ void GameObject::Render(HDC hdc)
 	//SelectObject(hdc, OldBrush);
 	//DeleteObject(BlueBrush);
 	////DeleteObject(RedPen);
+}
+
+void GameObject::initTransform()
+{
+	AddComponent<Transform>();
 }

@@ -40,6 +40,9 @@ public:
 	}
 
 private:
+	void initTransform();
+
+private:
 	vector<Component*> m_Components;
 };
 
